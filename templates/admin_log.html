@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2 class="mb-3"><i class="fas fa-clipboard-list"></i> 관리자 로그</h2>
+
+<div class="card mb-3">
+  <div class="card-body">
+    <form class="row g-3" method="GET">
+      <div class="col-auto">
+        <label>Role:</label>
+        <input type="text" name="role" value="{{ role_filter }}" class="form-control">
+      </div>
+      <div class="col-auto">
+        <label>Action:</label>
+        <input type="text" name="action" value="{{ action_filter }}" class="form-control">
+      </div>
+      <div class="col-auto">
+        <label>Detail:</label>
+        <input type="text" name="detail" value="{{ detail_filter }}" class="form-control">
+      </div>
+      <div class="col-auto">
+        <label>Time Start(HHMMSS):</label>
+        <input type="text" name="time_start" value="{{ time_start }}" class="form-control">
+      </div>
+      <div class="col-auto">
+        <label>Time End(HHMMSS):</label>
+        <input type="text" name="time_end" value="{{ time_end }}" class="form-control">
+      </div>
+      <div class="col-auto align-self-end">
+        <button class="btn btn-primary btn-sm">필터 적용</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<table id="logs-table" class="table table-bordered table-hover">
+  <thead class="table-light">
+    <tr><th>시간(HHMMSS)</th><th>역할</th><th>액션</th><th>상세</th></tr>
+  </thead>
+  <tbody>
+    {% for l in logs %}
+    <tr>
+      <td>{{ l.time }}</td>
+      <td>{{ l.role }}</td>
+      <td>{{ l.action }}</td>
+      <td>{{ l.detail }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

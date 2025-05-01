@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="text-center">
+  <h2 class="mb-3"><i class="fas fa-check-circle text-success"></i> 주문 접수 완료</h2>
+  <p>총 금액: <strong>{{ total_price }}원</strong></p>
+  <p>입금 계좌: <strong>카카오뱅크 123-456-7890 유윤지</strong></p>
+  <p>주문ID: <strong>{{ order_id }}</strong></p>
+  <a href="{{ url_for('index') }}" class="btn btn-outline-primary mt-3">
+    <i class="fas fa-home"></i> 메인으로
+  </a>
+</div>
+{% endblock %}

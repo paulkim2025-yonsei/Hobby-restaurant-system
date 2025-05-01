@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-8">
+    <div class="card shadow">
+      <div class="card-body text-center">
+        <h2 class="card-title mb-4">안내 페이지</h2>
+        <a href="{{ url_for('order') }}" class="btn btn-primary me-2">
+          <i class="fas fa-utensils"></i> [주문하기]
+        </a>
+        <a href="{{ url_for('admin') }}" class="btn btn-warning me-2">
+          <i class="fas fa-user-shield"></i> 관리자 페이지
+        </a>
+        <a href="{{ url_for('kitchen') }}" class="btn btn-success">
+          <i class="fas fa-hat-chef"></i> 주방 페이지
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

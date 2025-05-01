@@ -1,0 +1,54 @@
+{
+  "menuItems": [
+    {
+      "id": 1,
+      "name": "메인안주A",
+      "price": 12000,
+      "category": "main",
+      "soldOut": false
+    },
+    {
+      "id": 2,
+      "name": "메인안주B",
+      "price": 15000,
+      "category": "main",
+      "soldOut": false
+    },
+    {
+      "id": 3,
+      "name": "소주",
+      "price": 4000,
+      "category": "soju",
+      "soldOut": false
+    },
+    {
+      "id": 4,
+      "name": "맥주(1L)",
+      "price": 8000,
+      "category": "beer",
+      "soldOut": false
+    },
+    {
+      "id": 5,
+      "name": "콜라",
+      "price": 2000,
+      "category": "drink",
+      "soldOut": false
+    },
+    {
+      "id": 6,
+      "name": "사이다",
+      "price": 2000,
+      "category": "drink",
+      "soldOut": false
+    },
+    {
+      "id": 7,
+      "name": "생수",
+      "price": 1000,
+      "category": "drink",
+      "soldOut": false
+    }
+  ],
+  "orders": []
+}

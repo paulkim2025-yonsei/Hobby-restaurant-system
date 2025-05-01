@@ -1,0 +1,84 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2 class="mb-3"><i class="fas fa-receipt"></i> 주문하기</h2>
+
+<!-- 규칙 위반 시 에러 메시지 표시 -->
+{% for msg in get_flashed_messages(category_filter=["error"]) %}
+  <p class="text-danger">{{ msg }}</p>
+{% endfor %}
+
+<form method="POST">
+  <div class="mb-3">
+    <label class="form-label">테이블 번호</label>
+    <select name="tableNumber" class="form-select">
+      <option value="">-- 선택 --</option>
+      {% for t in table_numbers %}
+        <option value="{{ t }}">{{ t }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">주문 종류</label>
+    <select name="isFirstOrder" class="form-select">
+      <option value="true">최초 주문</option>
+      <option value="false">추가 주문</option>
+    </select>
+  </div>
+
+  <div class="alert alert-info">
+    <h6>주의사항</h6>
+    <ul class="mb-0">
+      <li>이용시간은 최초 주문 시점부터 <strong>{{ settings.time_warning2 }}분</strong>입니다.</li>
+      <li>메인안주: <strong>{{ settings.main_anju_people }}명당 {{ settings.main_anju_count }}개</strong>를 반드시 주문해야 합니다.</li>
+      <li>맥주는 최초 주문시에만 최대 <strong>{{ settings.beer_limit_count }}병</strong>입니다.</li>
+    </ul>
+    <div class="form-check mt-2">
+      <input class="form-check-input" type="checkbox" id="noticeChecked" name="noticeChecked">
+      <label class="form-check-label" for="noticeChecked">
+        주의사항을 확인했습니다.
+      </label>
+    </div>
+    <div class="mt-2">
+      <label>인원수:
+        <input type="number" name="peopleCount" min="1" value="1" class="form-control d-inline-block w-auto">
+      </label>
+    </div>
+  </div>
+
+  <h4 class="mt-4">메뉴 선택</h4>
+  <table class="table table-bordered align-middle">
+    <thead class="table-light">
+      <tr>
+        <th>메뉴</th>
+        <th>가격</th>
+        <th>수량</th>
+        <th>품절여부</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for m in menu_items %}
+      <tr>
+        <td>{{ m.name }}</td>
+        <td>{{ m.price }}원</td>
+        <td>
+          {% if m.sold_out %}
+            <span class="text-danger">품절</span>
+          {% else %}
+            <input type="number" name="qty_{{m.id}}" value="0" min="0" class="form-control w-50">
+          {% endif %}
+        </td>
+        <td>
+          {% if m.sold_out %}
+            <i class="fas fa-ban text-danger"></i>
+          {% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <button type="submit" class="btn btn-primary">
+    <i class="fas fa-paper-plane"></i> 주문 제출
+  </button>
+</form>
+{% endblock %}

@@ -1,0 +1,6 @@
+Flask
+python-dotenv
+gunicorn
+SQLAlchemy
+PyMySQL
+pytz
