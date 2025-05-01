@@ -21,16 +21,16 @@ from sqlalchemy.exc import SQLAlchemyError
 # 환경변수 로드
 # ─────────────────────────────────────────────────────────
 load_dotenv()
-ADMIN_ID   = os.getenv("ADMIN_ID", "admin")
-ADMIN_PW   = os.getenv("ADMIN_PW", "admin123")
-KITCHEN_ID = os.getenv("KITCHEN_ID", "kitchen")
-KITCHEN_PW = os.getenv("KITCHEN_PW", "kitchen123")
+ADMIN_ID   = os.getenv("ADMIN_ID")
+ADMIN_PW   = os.getenv("ADMIN_PW")
+KITCHEN_ID = os.getenv("KITCHEN_ID")
+KITCHEN_PW = os.getenv("KITCHEN_PW")
 
 DB_HOST = os.getenv("DB_HOST", "localhost")
 DB_PORT = os.getenv("DB_PORT", "3306")
 DB_NAME = os.getenv("DB_NAME")
 DB_USER = os.getenv("DB_USER")
-DB_PASS = os.getenv("DB_PASS", "A1b2C3d4!")
+DB_PASS = os.getenv("DB_PASS")
 
 DB_URL = f"mysql+pymysql://{DB_USER}:{DB_PASS}@{DB_HOST}:{DB_PORT}/{DB_NAME}?charset=utf8mb4"
 
